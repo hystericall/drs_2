@@ -50,6 +50,7 @@ en:
       create_position: "Create position"
       positions: "Positions"
       divisions: "Divisions"
+      request: "New request"
     footer:
       a: "A"
       framgia: "Framgia"
@@ -109,7 +110,8 @@ en:
   you_sure: "Are you sure?"
   test_delete: "Just testing the button, no deletion yet"
   greeting: "Hi %{user_name}"
-  welcome_mess: "Welcome to the Sample App! Click on the link below to activate your account:"
+  welcome_mess: "Your request recently have been seen and modified by manager %{name}.
+    Please access your profile for more information."
   activate: "Activate"
   account_activated: "Account Activated"
   invalid_link: "Link is invalid"
@@ -126,7 +128,9 @@ en:
   requestcreated: "Request created!"
   title_following: "Following"
   title_followers: "Followers"
-  hm: "hh:mm"
+  title_status: "Pending request"
+  request_fail: "Cannot accept or refuse"
+  hm: "HH:mm"
   dmy: "DD/MM/YYYY"
   dateoff: "dateoff"
   request:
@@ -138,6 +142,9 @@ en:
   demote_manager: "Demote"
   switch_div_user: "Add to division"
   cant_switch_div: "Something wrong. Updating division failed"
+  request_pending:
+    one: "%{count} request pending"
+    other: "%{count} requests pending"
   users:
     new:
       title: "Sign up"
@@ -154,6 +161,7 @@ en:
       unfollow: "Unfollow"
     show:
       request: "Requests (%{size})"
+      view: "User information"
     show_follow:
       view: "view my profile"
       request: "Requests: %{size}"
@@ -161,6 +169,16 @@ en:
       title: "Switch Division"
       submit: "Save changes"
       header: "Switch Division"
+    info:
+      title: "User information"
+      header: "Information"
+      name: "Name"
+      role: "Role"
+      position: "Position"
+      division: "Division"
+      usercode: "User code"
+      skill: "Skill"
+      email: "Email"
   shared:
     error_messages:
       error_contain: "This form contains "
@@ -178,6 +196,8 @@ en:
       Ots: "Offset time start:"
       Ote: "Offset time end:"
       reason: "Reason..."
+    search:
+      search: "Search"
     stats:
       following: "following"
       followers: "followers"
@@ -200,9 +220,11 @@ en:
       delete: "delete"
       edit: "edit"
       confirm: "You sure?"
+      accept: "Accept"
+      refuse: "Refuse"
   user_mailer:
     account_activation:
-      subject: "Account Activation"
+      subject: "Request changed"
       header: "Daily Report System"
     password_reset:
       subject: "Password Reset"

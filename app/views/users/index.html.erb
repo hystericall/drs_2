@@ -1,12 +1,16 @@
 <% provide :title, t(".title") %>
-<h1><%= t ".title" %></h1>
-<% if is_manager_admin? current_user %>
-<div>
-  <%= render "shared/search_form" %>
+<div class="panel panel-default">
+  <div class="panel-body">
+    <h1><%= t ".title" %></h1>
+    <% if is_manager_admin? current_user %>
+      <div>
+        <%= render "shared/search_form" %>
+      </div>
+    <% end %>
+    <%= will_paginate %>
+    <ul class="users">
+      <%= render partial: "shared/user", collection: @users %>
+    </ul>
+    <%= will_paginate %>
+  </div>
 </div>
-<% end %>
-<%= will_paginate %>
-<ul class="users">
-  <%= render partial: "shared/user", collection: @users %>
-</ul>
-<%= will_paginate %>

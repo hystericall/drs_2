@@ -4,8 +4,9 @@ class UserMailer < ApplicationMailer
   #
   #   en.user_mailer.account_activation.subject
   #
-  def account_activation user
+  def account_activation user, manager
     @user = user
+    @manager = manager
     mail to: @user.email, subject: t(".subject")
   end
 

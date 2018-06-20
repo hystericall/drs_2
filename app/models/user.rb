@@ -32,6 +32,7 @@ class User < ApplicationRecord
 
   before_create :create_activation_digest
   before_save ->{self.email = email.downcase}
+  scope :find_user_in_division, ->(id){where "division_id = ? AND role = 0", id}
 
   has_secure_password
 
@@ -86,6 +87,11 @@ class User < ApplicationRecord
 
   def in_division_of? division
     division == division_id
+  end
+
+  def request_pending
+    user_had_request = User.find_user_in_division(division_id).map(&:id)
+    Request.find_pending_request user_had_request
   end
 
   private

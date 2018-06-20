@@ -1,5 +1,4 @@
-<%= t "greating", user_name: @user.name %>,
+<%= t "greeting", user_name: @user.name %>,
 
-<%= t "welcome_mess" %>
+<%= t "welcome_mess" , name: @manager.name %>
 
-<%= edit_account_activation_url(@user.activation_token, email: @user.email) %>

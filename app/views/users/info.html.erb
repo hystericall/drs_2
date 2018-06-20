@@ -1,0 +1,27 @@
+<% provide :title, t(".title") %>
+<div class="panel panel-default">
+  <div class="panel-body">
+    <h1><%= t ".header" %></h1>
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <ul class="list-group">
+          <span class="label label-info"><%= t ".role" %></span>
+          <li class="list-group-item well well-sm"><%= @user.role %></li>
+          <span class="label label-default"><%= t ".name" %></span>
+          <li class="list-group-item well well-sm"><%= @user.name %></li>
+          <span class="label label-default"><%= t ".email" %></span>
+          <li class="list-group-item well well-sm"><%= @user.email %></li>
+          <span class="label label-default"><%= t ".division" %></span>
+          <li class="list-group-item well well-sm"><%= @division.name %></li>
+          <span class="label label-default"><%= t ".position" %></span>
+          <li class="list-group-item well well-sm"><%= @position.name %></li>
+          <span class="label label-default"><%= t ".usercode" %></span>
+          <li class="list-group-item well well-sm"><%= @user.user_code %></li>
+          <span class="label label-default"><%= t ".skill" %></span>
+          <li class="list-group-item well well-sm"><%= @user.skill %></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -5,7 +5,7 @@ max_length: 255
 checked: "1"
 index_ava_size: 50
 index_per_page: 30
-request_per_page: 10
+request_per_page: 8
 maximum_content: 140
 dateoff: "dateoff"
 il: "il"

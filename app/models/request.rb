@@ -15,5 +15,15 @@ class Request < ApplicationRecord
   validates :content, presence: true, length: {maximum: Settings.maximum_content}
 
   scope :descending, ->{order(created_at: :desc)}
+  scope :increasing, ->{order :created_at}
   scope :find_user_id_in_db, ->(id, following_ids){where "user_id IN (?) OR user_id = ?", following_ids, id}
+  scope :find_pending_request, ->(id){where "status = 0 AND user_id IN (?)", id}
+
+  def approve_request
+    update_attributes status: 1
+  end
+
+  def disapprove_request
+    update_attributes status: 2
+  end
 end

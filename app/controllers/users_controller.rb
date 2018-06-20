@@ -1,12 +1,18 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user, except: %i(new show create)
+  before_action :logged_in_user, except: %i(new show create info)
   before_action :load_user, except: %i(new index create)
   before_action :correct_user, only: %i(edit update)
   before_action :is_admin_logged_in?, only: %i(new destroy)
-  before_action :load_div_pos, except: %i(destroy index show)
+  before_action :load_div_pos, except: %i(destroy index show info)
 
   def show
     @requests = @user.requests.paginate page: params[:page]
+  end
+
+  def info
+    @position = Position.find_by id: @user.position_id
+    @division = Division.find_by id: @user.division_id
+    render :info
   end
 
   def index
@@ -51,13 +57,13 @@ class UsersController < ApplicationController
 
   def following
     @title = t "title_following"
-    @users = @user.following.paginate(page: params[:page], per_page: Settings.index_per_page)
+    @users = @user.following.paginate(page: params[:page], per_page: Settings.request_per_page)
     render :show_follow
   end
 
   def followers
     @title = t "title_followers"
-    @users = @user.followers.paginate(page: params[:page], per_page: Settings.index_per_page)
+    @users = @user.followers.paginate(page: params[:page], per_page: Settings.request_per_page)
     render :show_follow
   end
 
@@ -89,6 +95,13 @@ class UsersController < ApplicationController
   end
 
   def edit_division; end
+
+  def status
+    @title = t "title_status"
+    @request_pendings = current_user.request_pending.increasing
+      .paginate(page: params[:page], per_page: Settings.request_per_page)
+    render :status
+  end
 
   private
 

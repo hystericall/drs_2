@@ -1,0 +1,10 @@
+<%= form_for @request do |f| %>
+  <%= f.collection_select :status, @request_items, :id, :status, {prompt: true}, {class: "form-control size"} %>
+
+  <%= f.collection_select :content, @request_items, :id, :content, {prompt: true}, {class: "form-control size"} %>
+
+  <%= button_tag( :class => "btn btn-info searchsize") do %>
+    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+    <%= t ".search" %>
+  <% end %>
+<% end %>

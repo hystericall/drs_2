@@ -1,8 +1,15 @@
+<% provide(:manager, @manager) %>
 <li id="request-<%= request.id %>">
   <%= link_to gravatar_for(request.user, size: Settings.index_ava_size), request.user %>
   <span class="user"><%= link_to request.name, request.user %> -
     <span class=<%= request.status %>><%= request.status %></span>
   </span>
+  <% if current_user.manager? && request.pending? %>
+    <div class="btn-group manager_part" role="group">
+      <button type="button" class="btn btn-success"><%= link_to t(".accept"), approve_request_path(request), method: :patch, class: "linkfix1" %></button>
+      <button type="button" class="btn btn-danger"><%= link_to t(".refuse"), disapprove_request_path(request), method: :patch, class: "linkfix1" %></button>
+    </div>
+  <% end %>
   <span class="date_setting">
     <b><%= request_date request %></b><%= request.date %>
     <% unless request.dateoff? %>

@@ -1,0 +1,12 @@
+<% provide(:title, @title) %>
+<div class="panel panel-default">
+  <div class="panel-body">
+    <h3><%= I18n.t(:request_pending, count: current_user.request_pending.size) %></h3>
+    <% if @request_pendings.any? %>
+      <ol class="requests">
+        <%= render @request_pendings %>
+      </ol>
+      <%= will_paginate @request_pendings %>
+    <% end %>
+  </div>
+</div>

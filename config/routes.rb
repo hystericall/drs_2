@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   delete "/logout", to: "sessions#destroy"
   resources :users do
     member do
-      get :following, :followers
+      get :following, :followers, :status, :info
       get :edit_division
       patch "/edit_division", to: "users#update"
       patch "/switch_division", to: "users#add_to_your_division"
@@ -18,6 +18,10 @@ Rails.application.routes.draw do
   resources :account_activations, only: :edit
   resources :divisions, except: :destroy
   resources :positions, except: :destroy
-  resources :requests
+  resources :requests do
+    member do
+      patch :approve, :disapprove
+    end
+  end
   resources :relationships, only: %i(create destroy)
 end

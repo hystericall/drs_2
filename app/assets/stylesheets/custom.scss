@@ -89,6 +89,14 @@ p {
   }
 }
 
+.linkfix1 {
+  color:white;
+  &:hover {
+    color: white;
+    text-decoration: none;
+  }
+}
+
 .imagesetting{
   width:21px;
 }
@@ -156,6 +164,19 @@ input {
   .form-control {
     color: $state-danger-text;
   }
+}
+
+.size {
+  width: 30%;
+  display: inline-block;
+  margin-right: 25px;
+}
+
+.searchsize {
+  width: 12%;
+  display: inline-block;
+  position: relative;
+  top:-1px;
 }
 
 .checkbox {
@@ -291,6 +312,11 @@ aside {
     margin-right: 10px;
     margin-top: 5px;
   }
+}
+
+.manager_part {
+  float:right;
+  padding-top:20px;
 }
 
 aside {
