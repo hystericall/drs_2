@@ -1,0 +1,16 @@
+<header class="navbar navbar-fixed-top navbar-inverse">
+  <div class="container">
+    <a class="navbar-brand" href=<%= root_path %>>
+      <img alt="Brand" src="https://d2v9k5u4v94ulw.cloudfront.net/small_light(dw=200,dh=200,da=l,ds=s,cw=200,ch=200,cc=FFFFFF)/assets/images/1347527/original/75c8cddf-1b11-4322-a17a-e20fb0baf2a7.png?1488343457" class="imagesetting">
+    </a>
+    <%= link_to t(".dailyreport"), root_path, class: "logo" %>
+    <nav>
+      <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to t(".home"), root_path %></li>
+        <li><%= link_to t(".help"), help_path %></li>
+        <button type="button" class="btn btn-default navbar-btn">
+          <%= link_to t(".login"), "#", class:"linkfix"%></button>
+      </ul>
+    </nav>
+  </div>
+</header>
