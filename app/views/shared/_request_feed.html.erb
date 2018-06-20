@@ -1,0 +1,6 @@
+<% if @request_items.any? %>
+  <ol class="requests">
+    <%= render @request_items %>
+  </ol>
+  <%= will_paginate @request_items %>
+<% end %>

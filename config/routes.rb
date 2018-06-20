@@ -10,4 +10,5 @@ Rails.application.routes.draw do
   resources :account_activations, only: :edit
   resources :divisions, except: :destroy
   resources :positions, except: :destroy
+  resources :requests
 end

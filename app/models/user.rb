@@ -5,7 +5,7 @@ class User < ApplicationRecord
 
   belongs_to :division
   belongs_to :position
-  has_many :requests
+  has_many :requests, dependent: :destroy
   has_many :active_relationships, class_name: Relationship.name,
     foreign_key: :follower_id, dependent: :destroy
   has_many :passive_relationships, class_name:  Relationship.name,
@@ -47,6 +47,10 @@ class User < ApplicationRecord
     digest = send "#{attribute}_digest"
     return false if digest.nil?
     BCrypt::Password.new(digest).is_password? token
+  end
+
+  def requestfeed
+    requests
   end
 
   def forget

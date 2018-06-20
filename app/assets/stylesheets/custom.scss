@@ -1,14 +1,19 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "bootstrap-datetimepicker";
 
 /* mixins, variables, etc. */
 $gray-medium-light: #eaeaea;
 $success_color: #bbb;
+$saddlebrown: #8B4513;
+$micropost_li_border_color: #e8e8e8;
+$success: #28a745;
+$danger: #dc3545;
 
 @mixin box_sizing {
-  -moz-box-sizing:    border-box;
+  -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
-  box-sizing:         border-box;
+  box-sizing: border-box;
 }
 
 /* universal */
@@ -123,6 +128,10 @@ footer {
 }
 
 /* forms */
+.radioform {
+  width: auto !important;
+}
+
 input, textarea, select, .uneditable-input {
   border: 1px solid $success_color;
   width: 100%;
@@ -161,6 +170,103 @@ input {
 .session_remember_me {
   width: auto;
   margin-left: 0 !important;
+}
+
+/* sidebar */
+aside {
+  section.user_info {
+    margin-top: 20px;
+  }
+  section {
+    padding: 10px 0;
+    margin-top: 20px;
+    &:first-child {
+      border: 0;
+      padding-top: 0;
+    }
+    span {
+      display: block;
+      margin-bottom: 3px;
+      line-height: 1;
+    }
+    h1 {
+      font-size: 1.4em;
+      text-align: left;
+      letter-spacing: -1px;
+      margin-bottom: 3px;
+      margin-top: 0px;
+    }
+  }
+}
+
+.gravatar {
+  float: left;
+  margin-right: 10px;
+}
+
+.gravatar_edit {
+  margin-top: 15px;
+}
+
+/* requests */
+.requests {
+  list-style: none;
+  padding: 0;
+  li {
+    padding: 10px 0;
+    border-top: 1px solid $micropost_li_border_color;
+  }
+  .user {
+    margin-top: 5em;
+    padding-top: 0;
+  }
+  .pending {
+    @extend .badge;
+    background-color: $saddlebrown;
+  }
+  .approved {
+    @extend .badge;
+    background-color: $success;
+  }
+  .disapproved {
+    @extend .badge;
+    background-color: $danger;
+  }
+  .content {
+    display: block;
+    margin-left: 60px;
+    img {
+      display: block;
+      padding: 5px 0;
+    }
+  }
+  .date_setting {
+    display: block;
+  }
+  .timestamp {
+    color: $gray-light;
+    display: block;
+    margin-left: 60px;
+  }
+  .gravatar {
+    float: left;
+    margin-right: 10px;
+    margin-top: 5px;
+  }
+}
+
+aside {
+  textarea {
+    height: 100px;
+    margin-bottom: 5px;
+  }
+}
+
+span.picture {
+  margin-top: 10px;
+  input {
+    border: 0;
+  }
 }
 
 /* Users index */

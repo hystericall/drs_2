@@ -32,6 +32,9 @@
 en:
   title: "Daily Report System"
   maintitle: "Daily Report System"
+  time:
+    formats:
+      time: "%H:%M"
   layouts:
     header:
       home: "Home"
@@ -61,8 +64,9 @@ en:
       contain1: "This is the home page for the"
       contain2: "Framgia"
       contain3: "Daily Report System."
-      signupnow: "Sign up now!"
-      micropost: "Micropost Feed"
+      login: "Log in now!"
+      request: "Request"
+      submit: "Create request"
     help:
       title: "Help"
       header: "Help"
@@ -82,18 +86,10 @@ en:
       contain5: "to teach web development with"
       contain6: "Ruby on Rails"
       contain7: "This is the sample application for the tutorial."
-  users:
-    new:
-      title: "Sign up"
-      submit: "Create account"
-  shared:
-    error_messages:
-      error_contain: "This form contains "
-      error: "error"
   sessions:
     new:
       title: "Log in"
-      signupnow: "Sign up now!"
+      login: "Log in now!"
       email: "Email"
       pass: "Password"
       rememberme: "Remember me on this computer"
@@ -122,6 +118,18 @@ en:
   failed: "Fail to create"
   edit: "Edit"
   ultility: "Ultility"
+  requestdeleted: "Request deleted"
+  requestnotdeleted: "Deleted error"
+  pleaselogin: "Please log in."
+  updated: "Request updated"
+  requestnotfound: "No requests found."
+  requestcreated: "Request created!"
+  hm: "hh:mm"
+  dmy: "DD/MM/YYYY"
+  dateoff: "dateoff"
+  request:
+    one: "%{count} request"
+    other: "%{count} requests"
   users:
     new:
       title: "Sign up"
@@ -136,6 +144,38 @@ en:
     error_messages:
       error_contain: "This form contains "
       error: "error"
+    user_info:
+      view: "view my profile"
+    request_form:
+      type: "Type of request:"
+      dateoff: "Date off"
+      il: "In late"
+      le: "Leave early"
+      date: "Date:"
+      time: "Time:"
+      Odate: "Offset date:"
+      Ots: "Offset time start:"
+      Ote: "Offset time end:"
+      reason: "Reason..."
+  requests:
+    edit:
+      title: "Edit request"
+      submit: "Edit Request"
+      header: "Update your request"
+    request:
+      dayoff: "One day off: "
+      at: "At: "
+      dayil: "Date in late: "
+      dayle: "Date leave early: "
+      offday: "Offset date: "
+      from: "From"
+      to: "to"
+      reason: "Reason: "
+      contain1: "Posted"
+      contain2: "ago."
+      delete: "delete"
+      edit: "edit"
+      confirm: "You sure?"
   user_mailer:
     account_activation:
       subject: "Account Activation"

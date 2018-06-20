@@ -23,6 +23,9 @@ gem "bootstrap-will_paginate", "1.0.0"
 gem "figaro"
 gem "carrierwave", "1.2.2"
 gem "mini_magick", "4.7.0"
+gem "momentjs-rails", ">= 2.9.0"
+gem "bootstrap3-datetimepicker-rails", "~> 4.17.47"
+gem "i18n-js"
 
 group :production do
   gem "pg", "0.20.0"
