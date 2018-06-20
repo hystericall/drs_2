@@ -15,4 +15,5 @@ class Request < ApplicationRecord
   validates :content, presence: true, length: {maximum: Settings.maximum_content}
 
   scope :descending, ->{order(created_at: :desc)}
+  scope :find_user_id_in_db, ->(id, following_ids){where "user_id IN (?) OR user_id = ?", following_ids, id}
 end

@@ -13,4 +13,8 @@ module UsersHelper
   def is_manager_admin? user
     user.manager? || user.admin?
   end
+
+  def check_user
+    @user ||= current_user
+  end
 end

@@ -5,15 +5,17 @@ class UsersController < ApplicationController
   before_action :is_admin_logged_in?, only: %i(new update destroy)
   before_action :load_div_pos, except: %i(destroy index show)
 
-  def show; end
+  def show
+    @requests = @user.requests.paginate page: params[:page]
+  end
 
   def index
-    if search_params.present?
-      @users = User.public_send(search_params[:filter], search_params[:keyword])
-        .lastest.paginate(page: params[:page], per_page: Settings.index_per_page)
-    else
-      @users = User.lastest.paginate(page: params[:page], per_page: Settings.index_per_page)
-    end
+    @users = if search_params.present?
+               User.public_send(search_params[:filter], search_params[:keyword])
+                 .lastest.paginate(page: params[:page], per_page: Settings.index_per_page)
+             else
+               User.lastest.paginate(page: params[:page], per_page: Settings.index_per_page)
+             end
   end
 
   def new
@@ -48,6 +50,18 @@ class UsersController < ApplicationController
       flash[:danger] = t "failed"
     end
     redirect_to users_path
+  end
+
+  def following
+    @title = t "title_following"
+    @users = @user.following.paginate(page: params[:page], per_page: Settings.index_per_page)
+    render :show_follow
+  end
+
+  def followers
+    @title = t "title_followers"
+    @users = @user.followers.paginate(page: params[:page], per_page: Settings.index_per_page)
+    render :show_follow
   end
 
   private
