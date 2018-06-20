@@ -38,6 +38,11 @@ en:
       help: "Help"
       login: "Log in"
       dailyreport: "Daily Report"
+      user: "Users"
+      profile: "Profile"
+      setting: "Settings"
+      account: "Account"
+      logout: "Log out"
     footer:
       a: "A"
       framgia: "Framgia"
@@ -73,6 +78,23 @@ en:
       contain5: "to teach web development with"
       contain6: "Ruby on Rails"
       contain7: "This is the sample application for the tutorial."
+  users:
+    new:
+      title: "Sign up"
+      submit: "Create account"
+  shared:
+    error_messages:
+      error_contain: "This form contains "
+      error: "error"
+  sessions:
+    new:
+      title: "Log in"
+      signupnow: "Sign up now!"
+      email: "Email"
+      pass: "Password"
+      rememberme: "Remember me on this computer"
+      newuser: "New user? "
+      forgotpass: "(forgot password)"
   email: "Email"
   name: "Name"
   division: "Division"
@@ -83,11 +105,4 @@ en:
   skill: "Skill"
   success: "success"
   user_not_found: "User not found"
-  users:
-    new:
-      title: "Sign up"
-      submit: "Create account"
-  shared:
-    error_messages:
-      error_contain: "This form contains "
-      error: "error"
+  invalidemail: "Invalid email/password combination"
