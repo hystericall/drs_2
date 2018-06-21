@@ -30,5 +30,46 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
   title: "Daily Report System"
+  maintitle: "Daily Report System"
+  layouts:
+    header:
+      home: "Home"
+      help: "Help"
+      login: "Log in"
+      dailyreport: "Daily Report"
+    footer:
+      a: "A"
+      framgia: "Framgia"
+      project: "Project"
+      contain1: "of"
+      about: "About"
+      new: "News"
+  static_pages:
+    home:
+      title: "Home"
+      header: "Welcome to the Daily Report System"
+      contain1: "This is the home page for the"
+      contain2: "Framgia"
+      contain3: "Daily Report System."
+      signupnow: "Sign up now!"
+      micropost: "Micropost Feed"
+    help:
+      title: "Help"
+      header: "Help"
+      contain1: "Get help on the Ruby on Rails Tutorial at the"
+      contain2: "Rails Tutorial help section"
+      contain3: "To get help on this system, see the"
+      contain4: "Open Education website of Framgia"
+    about:
+      title: "About"
+      header: "About"
+      contain1: "The"
+      contain2: "Ruby on Rails Tutorial"
+      contain3: "is a"
+      contain4: "and"
+      book: "book"
+      screencast: "screencast series"
+      contain5: "to teach web development with"
+      contain6: "Ruby on Rails"
+      contain7: "This is the sample application for the tutorial."
