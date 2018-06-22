@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   enum role: %i(user manager admin)
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
-  attr_accessor :remember_token
+  attr_accessor :remember_token, :activation_token
 
   belongs_to :division
   belongs_to :position
@@ -24,6 +24,7 @@ class User < ApplicationRecord
   validates :position_id, presence: true
   validates :division_id, presence: true
 
+  before_create :create_activation_digest
   before_save ->{self.email = email.downcase}
 
   has_secure_password
@@ -50,5 +51,20 @@ class User < ApplicationRecord
 
   def forget
     update_attributes remember_digest: nil
+  end
+
+  def activate
+    update_attributes activated: true, activated_at: Time.zone.now
+  end
+
+  def send_activation_email
+    UserMailer.account_activation(self).deliver_now
+  end
+
+  private
+
+  def create_activation_digest
+    self.activation_token = User.new_token
+    self.activation_digest = User.digest activation_token
   end
 end
