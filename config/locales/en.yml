@@ -103,6 +103,22 @@ en:
   password_confirmation: "Password Confirmation"
   user_code: "User code"
   skill: "Skill"
-  success: "success"
+  success: "Success"
   user_not_found: "User not found"
   invalidemail: "Invalid email/password combination"
+  you_sure: "Are you sure?"
+  test_delete: "Just testing the button, no deletion yet"
+  users:
+    new:
+      title: "Sign up"
+      submit: "Create account"
+    edit:
+      title: "User profile"
+      submit: "Save changes"
+      header: "Update your profile"
+    index:
+      title: "All Users"
+  shared:
+    error_messages:
+      error_contain: "This form contains "
+      error: "error"
