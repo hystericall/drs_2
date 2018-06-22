@@ -2,10 +2,13 @@ class UsersController < ApplicationController
   before_action :logged_in_user, except: %i(new show create)
   before_action :load_user, except: %i(new index create)
   before_action :correct_user, only: %i(edit update)
+  before_action :admin_user, only: :destroy
 
   def show; end
 
-  def index; end
+  def index
+    @users = User.paginate page: params[:page]
+  end
 
   def new
     @user = User.new
@@ -17,13 +20,31 @@ class UsersController < ApplicationController
     @user = User.new user_params
     if @user.save
       flash[:info] = t "success"
+      log_in @user
       redirect_to user_path(@user)
     else
       render :new
     end
   end
 
-  def update; end
+  def edit
+    @position = Position.all
+    @division = Division.all
+  end
+
+  def update
+    if @user.update_attributes user_params
+      flash[:success] = t "success"
+      redirect_to @user
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    flash[:success] = t "test_delete"
+    redirect_to users_path
+  end
 
   private
 
@@ -41,5 +62,9 @@ class UsersController < ApplicationController
     return if @user
     flash[:danger] = t "user_not_found"
     redirect_to root_url
+  end
+
+  def admin_user
+    redirect_to(root_url) unless current_user.admin?
   end
 end

@@ -1,4 +1,5 @@
 avatar_size: 80
 min_length: 6
 max_length: 255
-checked: 1
+checked: "1"
+index_ava_size: 50
