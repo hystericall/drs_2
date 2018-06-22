@@ -108,6 +108,13 @@ en:
   invalidemail: "Invalid email/password combination"
   you_sure: "Are you sure?"
   test_delete: "Just testing the button, no deletion yet"
+  greeting: "Hi %{user_name}"
+  welcome_mess: "Welcome to the Sample App! Click on the link below to activate your account:"
+  activate: "Activate"
+  account_activated: "Account Activated"
+  invalid_link: "Link is invalid"
+  check_email: "Check your email for Activation"
+  not_activated: "Account not activated. Check your email for the activation link."
   users:
     new:
       title: "Sign up"
@@ -122,3 +129,10 @@ en:
     error_messages:
       error_contain: "This form contains "
       error: "error"
+  user_mailer:
+    account_activation:
+      subject: "Account Activation"
+      header: "Daily Report System"
+    password_reset:
+      subject: "Password Reset"
+      header: "Password Reset"

@@ -5,9 +5,11 @@ class SessionsController < ApplicationController
 
   def create
     if @user && @user.authenticate(params[:session][:password])
-      log_in @user
-      params[:session][:remember_me] == Settings.checked ? remember(@user) : forget(@user)
-      redirect_back_or @user
+      if @user.activated?
+        login_and_redirect
+      else
+        show_not_activated
+      end
     else
       flash.now[:danger] = t "invalidemail"
       render :new
@@ -25,5 +27,16 @@ class SessionsController < ApplicationController
     @user = User.find_by email: params[:session][:email].downcase
     return if @user
     flash.now[:danger] = t "invalidemail"
+  end
+
+  def login_and_redirect
+    log_in @user
+    params[:session][:remember_me] == Settings.checked ? remember(@user) : forget(@user)
+    redirect_back_or @user
+  end
+
+  def show_not_activated
+    flash[:warning] = t "not_activated"
+    redirect_to root_path
   end
 end
