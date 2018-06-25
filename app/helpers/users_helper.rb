@@ -9,4 +9,8 @@ module UsersHelper
   def is_admin_not_current? user
     current_user.admin? && !current_user?(user)
   end
+
+  def user_exists? user
+    User.exists?(user.id)
+  end
 end

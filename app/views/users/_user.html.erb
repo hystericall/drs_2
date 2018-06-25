@@ -5,4 +5,8 @@
   | <%= link_to t("delete"), user, method: :delete,
   data: { confirm: t("you_sure") } %>
   <% end %>
+    <% if current_user.admin? %>
+  | <%= link_to t("edit"), user, method: :edit,
+  data: { confirm: t("you_sure") } %>
+  <% end %>
 </li>

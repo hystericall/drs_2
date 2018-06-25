@@ -1,3 +1,6 @@
 <li>
   <%= link_to position.name, position %>
+   <% if current_user.admin? %>
+    | <%= link_to t("edit"), edit_position_path(position) %>
+  <% end %>
 </li>

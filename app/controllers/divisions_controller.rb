@@ -1,5 +1,5 @@
 class DivisionsController < ApplicationController
-  before_action :is_admin_logged_in, only: %i(new create)
+  before_action :is_admin_logged_in?, only: %i(new create)
   before_action :load_division, except: %i(index create new)
 
   def show; end
@@ -18,6 +18,17 @@ class DivisionsController < ApplicationController
       flash[:danger] = t "failed"
       redirect_to root_path
     end
+  end
+
+  def edit; end
+
+  def update
+    if @division.update_attributes division_params
+      flash[:success] = t "success"
+    else
+      flash[:danger] = t "failed"
+    end
+    redirect_to divisions_path
   end
 
   def new

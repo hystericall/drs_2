@@ -45,6 +45,8 @@ en:
       logout: "Log out"
       create_division: "Create division"
       create_position: "Create position"
+      positions: "Positions"
+      divisions: "Divisions"
     footer:
       a: "A"
       framgia: "Framgia"
@@ -118,6 +120,8 @@ en:
   check_email: "Check your email for Activation"
   not_activated: "Account not activated. Check your email for the activation link."
   failed: "Fail to create"
+  edit: "Edit"
+  ultility: "Ultility"
   users:
     new:
       title: "Sign up"
@@ -145,9 +149,15 @@ en:
       submit: "Create Division"
     index:
       title: "All Divisions"
+    edit:
+      title: "Edit Division"
+      submit: "Save changes"
   positions:
     new:
       title: "New Position"
       submit: "Create Position"
     index:
       title: "All Positions"
+    edit:
+      title: "Edit Position"
+      submit: "Save changes"
