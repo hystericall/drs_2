@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :logged_in_user, except: %i(new show create)
   before_action :load_user, except: %i(new index create)
   before_action :correct_user, only: %i(edit update)
-  before_action :is_admin_logged_in?, only: %i(new update destroy)
+  before_action :is_admin_logged_in?, only: %i(new destroy)
   before_action :load_div_pos, except: %i(destroy index show)
 
   def show
@@ -10,12 +10,7 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = if search_params.present?
-               User.public_send(search_params[:filter], search_params[:keyword])
-                 .lastest.paginate(page: params[:page], per_page: Settings.index_per_page)
-             else
-               User.lastest.paginate(page: params[:page], per_page: Settings.index_per_page)
-             end
+    @users = search_users_from
   end
 
   def new
@@ -35,11 +30,13 @@ class UsersController < ApplicationController
   def edit; end
 
   def update
-    if @user.update_attributes user_params_update
-      flash[:success] = t "success"
-      redirect_to @user
+    if current_user.admin?
+      admin_update_div
+    elsif current_user.user?
+      user_update
     else
-      render :edit
+      flash[:danger] = t "failed"
+      redirect_to users_path
     end
   end
 
@@ -64,7 +61,48 @@ class UsersController < ApplicationController
     render :show_follow
   end
 
+  def promote
+    if @user.manager!
+      flash[:success] = t "success"
+    else
+      flash[:danger] = t "failed"
+    end
+    redirect_to users_path
+  end
+
+  def demote
+    if @user.user!
+      flash[:success] = t "success"
+    else
+      flash[:danger] = t "failed"
+    end
+    redirect_to users_path
+  end
+
+  def add_to_your_division
+    if @user.update_attributes division_id: current_user.division_id
+      flash[:success] = t "success"
+    else
+      flash[:danger] = t "cant_switch_div"
+    end
+    redirect_to users_path
+  end
+
+  def edit_division; end
+
   private
+
+  def admin_update_div
+    return unless @user.update_attributes division_params
+    flash[:success] = t "success"
+    redirect_to users_path
+  end
+
+  def user_update
+    return unless @user.update_attributes user_params_update
+    flash[:success] = t "success"
+    redirect_to @user
+  end
 
   def user_params
     params.require(:user).permit :name, :email, :user_code, :skill, :position_id,
@@ -76,24 +114,7 @@ class UsersController < ApplicationController
       :password, :password_confirmation
   end
 
-  def search_params
-    return if params[:search].blank?
-    params.require(:search).permit :filter, :keyword
-  end
-
-  def correct_user
-    redirect_to root_url unless current_user? @user
-  end
-
-  def load_user
-    @user = User.find_by id: params[:id]
-    return if @user
-    flash[:danger] = t "user_not_found"
-    redirect_to root_url
-  end
-
-  def load_div_pos
-    @position = Position.all.descending
-    @division = Division.all.descending
+  def division_params
+    params.require(:user).permit :division_id
   end
 end

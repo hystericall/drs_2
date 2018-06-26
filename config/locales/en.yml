@@ -133,6 +133,11 @@ en:
     one: "%{count} request"
     other: "%{count} requests"
   search: "Search"
+  switch_div_manager: "Switch division"
+  promote_user: "Promote to manager"
+  demote_manager: "Demote"
+  switch_div_user: "Add to division"
+  cant_switch_div: "Something wrong. Updating division failed"
   users:
     new:
       title: "Sign up"
@@ -152,6 +157,10 @@ en:
     show_follow:
       view: "view my profile"
       request: "Requests: %{size}"
+    edit_division:
+      title: "Switch Division"
+      submit: "Save changes"
+      header: "Switch Division"
   shared:
     error_messages:
       error_contain: "This form contains "
@@ -207,6 +216,8 @@ en:
     edit:
       title: "Edit Division"
       submit: "Save changes"
+    show:
+      title: "All users in this division"
   positions:
     new:
       title: "New Position"
@@ -216,3 +227,5 @@ en:
     edit:
       title: "Edit Position"
       submit: "Save changes"
+    show:
+      title: "All users in this position"

@@ -1,0 +1,7 @@
+<%= form_for :search, method: :get do |f| %>
+  <%= f.select :filter,
+    options_from_collection_for_select(user_filter, :first, :last),
+        {class: "form-control" } %>
+  <%= f.text_field :keyword, class: "form-control" %>
+  <%= f.submit t("search"), class: "btn btn-primary"%>
+<% end %>

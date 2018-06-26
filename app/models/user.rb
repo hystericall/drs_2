@@ -27,6 +27,8 @@ class User < ApplicationRecord
   scope :lastest, ->{order(created_at: :desc)}
   scope :by_user_name, ->(user_name){where("name like ?", "%#{user_name}%") if user_name.present?}
   scope :by_user_code, ->(user_code){where("user_code like ?", "%#{user_code}%") if user_code.present?}
+  scope :in_division, ->(division_id){where("division_id like ?", division_id.to_s)}
+  scope :in_position, ->(position_id){where("position_id like ?", position_id.to_s)}
 
   before_create :create_activation_digest
   before_save ->{self.email = email.downcase}
@@ -80,6 +82,10 @@ class User < ApplicationRecord
 
   def following? other_user
     following.include? other_user
+  end
+
+  def in_division_of? division
+    division == division_id
   end
 
   private
