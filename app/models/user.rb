@@ -24,6 +24,10 @@ class User < ApplicationRecord
   validates :position_id, presence: true
   validates :division_id, presence: true
 
+  scope :lastest, ->{order(created_at: :desc)}
+  scope :by_user_name, ->(user_name){where("name like ?", "%#{user_name}%") unless user_name.blank?}
+  scope :by_user_code, ->(user_code){where("user_code like ?", "%#{user_code}%") unless user_code.blank?}
+
   before_create :create_activation_digest
   before_save ->{self.email = email.downcase}
 
