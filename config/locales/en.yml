@@ -43,6 +43,8 @@ en:
       setting: "Settings"
       account: "Account"
       logout: "Log out"
+      create_division: "Create division"
+      create_position: "Create position"
     footer:
       a: "A"
       framgia: "Framgia"
@@ -115,6 +117,7 @@ en:
   invalid_link: "Link is invalid"
   check_email: "Check your email for Activation"
   not_activated: "Account not activated. Check your email for the activation link."
+  failed: "Fail to create"
   users:
     new:
       title: "Sign up"
@@ -136,3 +139,15 @@ en:
     password_reset:
       subject: "Password Reset"
       header: "Password Reset"
+  divisions:
+    new:
+      title: "New Division"
+      submit: "Create Division"
+    index:
+      title: "All Divisions"
+  positions:
+    new:
+      title: "New Position"
+      submit: "Create Position"
+    index:
+      title: "All Positions"

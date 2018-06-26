@@ -10,4 +10,9 @@ class ApplicationController < ActionController::Base
     flash[:danger] = t "pleaselogin"
     redirect_to login_url
   end
+
+  def is_admin_logged_in?
+    return if current_user.present? && current_user.admin?
+    redirect_to root_path
+  end
 end

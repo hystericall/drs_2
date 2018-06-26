@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_action :load_user, except: %i(new index create)
   before_action :correct_user, only: %i(edit update)
   before_action :admin_user, only: :destroy
-
+  before_action :load_div_pos, except: %i(destroy index show)
   def show; end
 
   def index
@@ -12,8 +12,6 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
-    @position = Position.all
-    @division = Division.all
   end
 
   def create
@@ -27,10 +25,7 @@ class UsersController < ApplicationController
     end
   end
 
-  def edit
-    @position = Position.all
-    @division = Division.all
-  end
+  def edit; end
 
   def update
     if @user.update_attributes user_params
@@ -66,5 +61,10 @@ class UsersController < ApplicationController
 
   def admin_user
     redirect_to(root_url) unless current_user.admin?
+  end
+
+  def load_div_pos
+    @position = Position.all.descending
+    @division = Division.all.descending
   end
 end
