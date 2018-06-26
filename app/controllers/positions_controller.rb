@@ -1,5 +1,5 @@
 class PositionsController < ApplicationController
-  before_action :is_admin_logged_in, only: %i(new create)
+  before_action :is_admin_logged_in?, only: %i(new create)
   before_action :load_position, except: %i(index create new)
 
   def show; end
@@ -20,6 +20,17 @@ class PositionsController < ApplicationController
     end
   end
 
+  def edit; end
+
+  def update
+    if @position.update_attributes position_params
+      flash[:success] = t "success"
+    else
+      flash[:danger] = t "failed"
+    end
+    redirect_to positions_path
+  end
+
   def new
     @position = Position.new
   end
@@ -31,7 +42,7 @@ class PositionsController < ApplicationController
   end
 
   def load_position
-    @position = position.find_by id: params[:id]
+    @position = Position.find_by id: params[:id]
     return if @position
     flash[:danger] = t "position_not_found"
     redirect_to root_path
