@@ -4,9 +4,20 @@
   <% if is_admin_not_current? user %>
   | <%= link_to t("delete"), user, method: :delete,
   data: { confirm: t("you_sure") } %>
-  <% end %>
-    <% if current_user.admin? %>
-  | <%= link_to t("edit"), user, method: :edit,
+    <% if user.manager? %>
+    | <%= link_to t("switch_div_manager"), edit_division_user_path(user), method: :get,
   data: { confirm: t("you_sure") } %>
+    | <%= link_to t("demote_manager"), demote_user_path(user), method: :patch,
+  data: { confirm: t("you_sure") } %>
+    <% elsif user.user? %>
+    | <%= link_to t("promote_user"), promote_user_path(user), method: :patch,
+  data: { confirm: t("you_sure") } %>
+    <% end %>
+  <% end %>
+  <% if current_user.manager? %>
+    <% if is_not_same_division? user %>
+    | <%= link_to t("switch_div_user"), switch_division_user_path(user), method: :patch,
+  data: { confirm: t("you_sure") } %>
+    <% end %>
   <% end %>
 </li>

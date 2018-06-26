@@ -133,6 +133,10 @@ en:
     one: "%{count} request"
     other: "%{count} requests"
   search: "Search"
+  switch_div_manager: "Switch division"
+  promote_user: "Promote to manager"
+  demote_manager: "Demote"
+  switch_div_user: "Add to division"
   users:
     new:
       title: "Sign up"
@@ -152,6 +156,10 @@ en:
     show_follow:
       view: "view my profile"
       request: "Requests: %{size}"
+    edit_division:
+      title: "Switch Division"
+      submit: "Save changes"
+      header: "Switch Division"
   shared:
     error_messages:
       error_contain: "This form contains "

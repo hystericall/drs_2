@@ -9,6 +9,10 @@ Rails.application.routes.draw do
   resources :users do
     member do
       get :following, :followers
+      get :edit_division
+      patch "/edit_division", to: "users#update"
+      patch "/switch_division", to: "users#add_to_your_division"
+      patch :promote, :demote
     end
   end
   resources :account_activations, only: :edit

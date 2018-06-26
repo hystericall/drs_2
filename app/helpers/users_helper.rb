@@ -10,11 +10,19 @@ module UsersHelper
     current_user.admin? && !current_user?(user)
   end
 
+  def user_exists? user
+    User.exists? user.id
+  end
+
   def is_manager_admin? user
     user.manager? || user.admin?
   end
 
   def check_user
     @user ||= current_user
+  end
+
+  def is_not_same_division? user
+    current_user.division_id != user.division_id
   end
 end

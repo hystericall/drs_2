@@ -3,23 +3,23 @@ class RelationshipsController < ApplicationController
 
   def create
     @user = User.find_by id: params[:followed_id]
-    unless @user
-      flash[:danger] = t "user_not_found"
-      redirect_to users_path
-    else
+    if @user
       current_user.follow @user
       respond_format
+    else
+      flash[:danger] = t "user_not_found"
+      redirect_to users_path
     end
   end
 
   def destroy
     @user = Relationship.find_by(id: params[:id]).followed
-    if @user.nil?
-      flash[:danger] = t "user_not_found"
-      redirect_to users_path
-    else
+    if @user
       current_user.unfollow @user
       respond_format
+    else
+      flash[:danger] = t "user_not_found"
+      redirect_to users_path
     end
   end
 

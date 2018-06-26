@@ -42,6 +42,11 @@ class User < ApplicationRecord
     SecureRandom.urlsafe_base64
   end
 
+  def self.search params
+    return User.all if params.blank?
+    User.where("#{params[:filter]} like ?", "%#{params[:keyword]}%")
+  end
+
   def remember
     self.remember_token = User.new_token
     update_attributes remember_digest: User.digest(remember_token)
