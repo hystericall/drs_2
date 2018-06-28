@@ -1,0 +1,82 @@
+<%= form_for @request do |f| %>
+  <%= render "shared/error_messages", object: f.object %>
+  <div class="field">
+    <%= f.label :request_type, t(".type") %><br />
+
+    <%= f.radio_button :request_type, Settings.dateoff, checked: false,
+      data: {behavior: "clickable"}, class: "radioform col-sm-1" %>
+    <%= f.label :request_type, t(".dateoff"), class: "col-sm-3 control-label",
+      value: Settings.dateoff %>
+
+    <%= f.radio_button :request_type, Settings.il, checked: false,
+      data: {behavior: "clickable"}, class: "radioform col-sm-1" %>
+    <%= f.label :request_type, t(".il"), class: "col-sm-3 control-label",
+      value: Settings.il  %>
+
+    <%= f.radio_button :request_type, Settings.le, checked: false,
+      data: {behavior: "clickable"}, class: "radioform col-sm-1" %>
+    <%= f.label :request_type, t(".le"), class: "col-sm-4 control-label",
+      value: Settings.le %><br /><br />
+
+    <div class="form-group">
+      <%= f.label :date, t(".date") %><br />
+      <div class="input-group date" id="datepicker">
+        <%= f.text_field :date, data:{ provide: "datetimepicker" },
+          class: "form-control" %>
+        <span class="input-group-addon">
+            <span class="glyphicon glyphicon-calendar"></span>
+        </span>
+      </div>
+    </div>
+
+    <div class="form-group illeform">
+      <%= f.label :time, t(".time") %><br />
+      <div class="input-group date" id="timepicker">
+        <%= f.text_field :time, data:{ provide: "datetimepicker" },
+          class: "form-control" %>
+        <span class="input-group-addon">
+            <span class="glyphicon glyphicon-calendar"></span>
+        </span>
+      </div>
+    </div>
+
+    <div class="form-group illeform">
+      <%= f.label :offset_date, t(".Odate") %><br />
+      <div class="input-group date" id="datepickerOff">
+        <%= f.text_field :offset_date, data:{ provide: "datetimepicker" },
+          class: "form-control" %>
+        <span class="input-group-addon">
+            <span class="glyphicon glyphicon-calendar"></span>
+        </span>
+      </div>
+    </div>
+
+    <div class="form-group illeform">
+      <%= f.label :offset_time_start, t(".Ots") %><br />
+      <div class="input-group date" id="timepickerOts">
+        <%= f.text_field :offset_time_start, data:{ provide: "datetimepicker" },
+          class: "form-control" %>
+        <span class="input-group-addon">
+            <span class="glyphicon glyphicon-calendar"></span>
+        </span>
+      </div>
+    </div>
+
+    <div class="form-group illeform">
+      <%= f.label :offset_time_end, t(".Ote") %><br />
+      <div class="input-group date" id="timepickerOte">
+        <%= f.text_field :offset_time_end, data:{ provide: "datetimepicker" },
+          class: "form-control" %>
+        <span class="input-group-addon">
+            <span class="glyphicon glyphicon-calendar"></span>
+        </span>
+      </div>
+    </div>
+
+    <%= f.text_area :content, placeholder: t(".reason")%>
+    <%= f.submit yield(:button_text), class: "btn btn-primary" %>
+
+  </div>
+<% end %>
+
+<%= javascript_include_tag "request_javascript.js" %>

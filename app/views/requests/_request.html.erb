@@ -1,0 +1,30 @@
+<li id="request-<%= request.id %>">
+  <%= link_to gravatar_for(request.user, size: Settings.index_ava_size), request.user %>
+  <span class="user"><%= link_to request.name, request.user %> -
+    <span class=<%= request.status %>><%= request.status %></span>
+  </span>
+  <span class="date_setting">
+    <b><%= request_date request %></b><%= request.date %>
+    <% unless request.dateoff? %>
+      <b><%= t ".at" %></b><%= l request.time, format: :time %><br/>
+    <b><%= t ".offday" %></b><%= request.offset_date %>. <u><i>
+      <%= t ".from" %></i></u>
+      <%= l request.offset_time_start, format: :time %> <u><i>
+      <%= t ".to" %></i></u>
+      <%= l request.offset_time_end, format: :time %>
+    <% end %>
+  </span>
+  <span class="content">
+    <b><%= t ".reason" %></b><%= request.content %>
+  </span>
+  <span class="timestamp">
+    <%= t ".contain1" %> <%= time_ago_in_words(request.created_at) %>
+      <%= t ".contain2" %>
+    <% if current_user?(request.user) && request.pending? %>
+      <%= link_to t(".delete"), request, method: :delete,
+        data: { confirm: t(".confirm") } %>
+      | <%= link_to t(".edit"), edit_request_path(request),
+        data: { confirm: t(".confirm") } %>
+    <% end %>
+  </span>
+</li>

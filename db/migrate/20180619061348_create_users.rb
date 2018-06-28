@@ -9,7 +9,7 @@ class CreateUsers < ActiveRecord::Migration[5.1]
       t.string :skill
       t.string :user_code
       t.index :user_code, unique: true
-      t.integer :role, default: 0
+      t.integer :role, null: false, default: 0
       t.timestamps
     end
   end
