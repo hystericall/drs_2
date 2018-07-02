@@ -130,6 +130,7 @@ en:
   request:
     one: "%{count} request"
     other: "%{count} requests"
+  search: "Search"
   users:
     new:
       title: "Sign up"

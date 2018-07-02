@@ -13,7 +13,13 @@
   <%= f.label t "user_code" %>
   <%= f.text_field :user_code, class: "form-control" %>
 
-  <% unless user_exists? @user %>
+  <% if @user.persisted? %>
+    <%= f.label t "division" %>
+    <%= f.collection_select :division_id, @division, :id, :name, {prompt: true}, {class: "form-control", disabled: true} %>
+
+    <%= f.label t "position" %>
+    <%= f.collection_select :position_id, @position, :id, :name, {prompt: true}, {class: "form-control", disabled: true} %>
+  <% else %>
     <%= f.label t "division" %>
     <%= f.collection_select :division_id, @division, :id, :name, {prompt: true}, {class: "form-control"} %>
 

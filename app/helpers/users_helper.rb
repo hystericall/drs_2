@@ -10,7 +10,7 @@ module UsersHelper
     current_user.admin? && !current_user?(user)
   end
 
-  def user_exists? user
-    User.exists?(user.id)
+  def is_manager_admin? user
+    user.manager? || user.admin?
   end
 end

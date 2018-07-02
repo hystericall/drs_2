@@ -5,11 +5,7 @@ class SessionsController < ApplicationController
 
   def create
     if @user && @user.authenticate(params[:session][:password])
-      if @user.activated?
-        login_and_redirect
-      else
-        show_not_activated
-      end
+      login_and_redirect
     else
       flash.now[:danger] = t "invalidemail"
       render :new
