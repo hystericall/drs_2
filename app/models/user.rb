@@ -25,8 +25,8 @@ class User < ApplicationRecord
   validates :division_id, presence: true
 
   scope :lastest, ->{order(created_at: :desc)}
-  scope :by_user_name, ->(user_name){where("name like ?", "%#{user_name}%") unless user_name.blank?}
-  scope :by_user_code, ->(user_code){where("user_code like ?", "%#{user_code}%") unless user_code.blank?}
+  scope :by_user_name, ->(user_name){where("name like ?", "%#{user_name}%") if user_name.present?}
+  scope :by_user_code, ->(user_code){where("user_code like ?", "%#{user_code}%") if user_code.present?}
 
   before_create :create_activation_digest
   before_save ->{self.email = email.downcase}
@@ -54,7 +54,8 @@ class User < ApplicationRecord
   end
 
   def requestfeed
-    requests
+    following_ids = following.map(&:id)
+    Request.find_user_id_in_db id, following_ids
   end
 
   def forget
@@ -67,6 +68,18 @@ class User < ApplicationRecord
 
   def send_activation_email
     UserMailer.account_activation(self).deliver_now
+  end
+
+  def follow other_user
+    following << other_user
+  end
+
+  def unfollow other_user
+    following.delete other_user
+  end
+
+  def following? other_user
+    following.include? other_user
   end
 
   private

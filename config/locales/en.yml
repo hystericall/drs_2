@@ -124,6 +124,8 @@ en:
   updated: "Request updated"
   requestnotfound: "No requests found."
   requestcreated: "Request created!"
+  title_following: "Following"
+  title_followers: "Followers"
   hm: "hh:mm"
   dmy: "DD/MM/YYYY"
   dateoff: "dateoff"
@@ -141,6 +143,15 @@ en:
       header: "Update your profile"
     index:
       title: "All Users"
+    follow:
+      follow: "Follow"
+    unfollow:
+      unfollow: "Unfollow"
+    show:
+      request: "Requests (%{size})"
+    show_follow:
+      view: "view my profile"
+      request: "Requests: %{size}"
   shared:
     error_messages:
       error_contain: "This form contains "
@@ -158,6 +169,9 @@ en:
       Ots: "Offset time start:"
       Ote: "Offset time end:"
       reason: "Reason..."
+    stats:
+      following: "following"
+      followers: "followers"
   requests:
     edit:
       title: "Edit request"

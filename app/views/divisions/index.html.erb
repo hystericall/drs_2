@@ -1,7 +1,13 @@
 <% provide :title, t(".title") %>
-<h1><%= t ".title" %></h1>
-<%= will_paginate %>
-<ul class="users">
-  <%= render @divisions %>
-</ul>
-<%= will_paginate %>
+<div class="panel panel-default">
+  <div class="panel-body">
+    <div class="page-header">
+      <h1><%= t ".title" %></h1>
+    </div>
+    <%= will_paginate %>
+    <ul class="users">
+      <%= render @divisions %>
+    </ul>
+    <%= will_paginate %>
+  </div>
+</div>
