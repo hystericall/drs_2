@@ -49,4 +49,12 @@ module SessionsHelper
   def store_location
     session[:forwarding_url] = request.original_url if request.get?
   end
+
+  def is_manager_admin? user
+    user.manager? || user.admin?
+  end
+
+  def is_admin_not_current? user
+    current_user.admin? && !current_user?(user)
+  end
 end

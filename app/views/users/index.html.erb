@@ -2,18 +2,11 @@
 <h1><%= t ".title" %></h1>
 <% if is_manager_admin? current_user %>
 <div>
-<%= form_for :search, method: :get do |f| %>
-  <%= f.select :filter,
-    options_from_collection_for_select(@filter =
-      {by_user_name: t("name"), by_user_code: t("user_code")}, :first, :last),
-        {class: "form-control" } %>
-  <%= f.text_field :keyword, class: "form-control" %>
-  <%= f.submit t("search"), class: "btn btn-primary"%>
-<% end %>
+  <%= render "shared/search_form" %>
 </div>
 <% end %>
 <%= will_paginate %>
 <ul class="users">
-  <%= render @users %>
+  <%= render partial: "shared/user", collection: @users %>
 </ul>
 <%= will_paginate %>

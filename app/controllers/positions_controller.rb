@@ -2,7 +2,10 @@ class PositionsController < ApplicationController
   before_action :is_admin_logged_in?, only: %i(new create)
   before_action :load_position, except: %i(index create new)
 
-  def show; end
+  def show
+    @users = User.in_position params[:id]
+    @users = search_users_from @users
+  end
 
   def index
     @positions = Position.paginate(page: params[:page], per_page: Settings.index_per_page)

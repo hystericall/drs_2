@@ -6,14 +6,6 @@ module UsersHelper
     image_tag(gravatar_url, alt: user.name, class: "gravatar")
   end
 
-  def is_admin_not_current? user
-    current_user.admin? && !current_user?(user)
-  end
-
-  def is_manager_admin? user
-    user.manager? || user.admin?
-  end
-
   def check_user
     @user ||= current_user
   end

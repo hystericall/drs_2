@@ -2,7 +2,10 @@ class DivisionsController < ApplicationController
   before_action :is_admin_logged_in?, only: %i(new create)
   before_action :load_division, except: %i(index create new)
 
-  def show; end
+  def show
+    @users = User.in_division params[:id]
+    @users = search_users_from @users
+  end
 
   def index
     @divisions = Division.paginate(page: params[:page], per_page: Settings.index_per_page)

@@ -12,3 +12,12 @@
     </div>
   </div>
 </div>
+<% if is_manager_admin? current_user %>
+  <div>
+    <%= render "shared/search_form" %>
+  </div>
+<% end %>
+<%= will_paginate @users %>
+<ul class="users">
+  <%= render partial: "shared/user", collection: @users %>
+</ul>

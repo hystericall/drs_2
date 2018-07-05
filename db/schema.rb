@@ -35,9 +35,9 @@ ActiveRecord::Schema.define(version: 20180621093732) do
   end
 
   create_table "requests", force: :cascade do |t|
-    t.integer "request_type"
+    t.integer "type"
     t.text "content"
-    t.integer "status", default: 0, null: false
+    t.integer "status", default: 0
     t.date "date"
     t.time "time"
     t.date "offset_date"
@@ -57,7 +57,7 @@ ActiveRecord::Schema.define(version: 20180621093732) do
     t.integer "position_id"
     t.string "skill"
     t.string "user_code"
-    t.integer "role", default: 0, null: false
+    t.integer "role", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "password_digest"
